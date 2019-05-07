@@ -15,7 +15,7 @@
 The goal of this tutorial is to explain how to import a large amount of image files from [OSS](https://www.alibabacloud.com/help/product/31815.htm) to [Image Search](https://www.alibabacloud.com/help/product/66413.htm) instance. OSS is a storage service and Image Search is an intelligent image service based on deep learning and machine learning technology on Alibaba Cloud. This tutorial helps you to prepare a configuration file and some setting parameters to execute OSS import on Image Search instance.
 
 
-## Prerequiste
+## Prerequisite
 
 ### Local environment
 
@@ -119,18 +119,21 @@ To import image files from OSS to Image Search instance, you have to create a co
     Put the increment.meta file you created at previous step into every OSS bucket folder which contains the images you want to import to Image search instance.
 
     ![images/oss_bucket_put_increment_meta.png](images/oss_bucket_put_increment_meta.png)
+
     ![images/oss_bucket_put_increment_meta2.png](images/oss_bucket_put_increment_meta2.png)
 
 
 ## Step 2 - Configure a OSS import setting parameters on Image Search instance
 
 First, click the *Import* button at right-top corner.
+
 ![images/image_search_instance_details.png](images/image_search_instance_details.png)
 
 Then, a menu appears which has input boxes of setting parameters that you have to prepare for OSS import.
+
 ![images/image_search_instance_oss_import_parameters.png](images/image_search_instance_oss_import_parameters.png)
 
-* ARN
+1. ARN
 
     You have to give some permissions to the Image Search instance. Please create a RAM role and input the ARN parameter.
 
@@ -138,13 +141,13 @@ Then, a menu appears which has input boxes of setting parameters that you have t
 
     2. Create a RAM role.
 
-        1. Click Create RAM Role button.
+        1. Click *Create RAM Role* button.
 
         2. Select a type as **Alibaba Cloud Service** and trusted service as **Image Search**.
 
             ![images/ram_role_image_search_oss_import.png](images/ram_role_image_search_oss_import.png)
-        
-        3. Input a RAM Role Name. For example, *Image-Search-OSS-import*.
+
+        3. Input a RAM Role Name. For example, "Image-Search-OSS-import".
 
         4. Click *OK* button.
 
@@ -174,11 +177,11 @@ Then, a menu appears which has input boxes of setting parameters that you have t
 
             ![images/ram_role_after_add_permissions.png](images/ram_role_after_add_permissions.png)
 
-* Bucket Name
+2. Bucket Name
 
     Check the bucket name which contains your images from [OSS console](https://oss.console.aliyun.com/overview), and input the name to ImageSearch instance OSS import parameter input box.
 
-* Path
+3. Path
 
     It represents the OSS bucket folder path. Check the bucket folder path which contains your images in your OSS bucket, and input the path to ImageSearch instance OSS import parameter input box. It must start with "/", for example "/bag". You have to input "/" if you put your images on root.
 
@@ -186,8 +189,8 @@ Then, a menu appears which has input boxes of setting parameters that you have t
 ## Step 3 - Execute OSS import
 
 After the configuration, click the *Import* button to execute OSS import. You can see your import history by click *Show Import History*.
-![images/image_search_instanct_import_history.png](images/image_search_instanct_import_history.png)
 
+![images/image_search_instanct_import_history.png](images/image_search_instanct_import_history.png)
 
 Please note that **OSS import can be executed to only one OSS bucket folder by once**. The images listed in increment.meta file which are not in the specified *Path* parameter will be ignored. If you want to import from multiple folders in OSS bucket, you have to change *Path* parameter and execute for each folder.
 

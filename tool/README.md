@@ -68,10 +68,10 @@ Before creating the application, you need to prepare account credentials of Alib
 
 ### Running on local
 
-0. Clone this repository 
+0. Clone this repository
 
 1. Build
-  
+
     First, run the following commands in a terminal to initialize the application.
 
     ```
@@ -94,13 +94,13 @@ Before creating the application, you need to prepare account credentials of Alib
     2. Input your credentials to the form and submit it to get images in your bucket.
 
     3. Check image list and select a category for each image if you want.
-    
+
     4. Click incremant.meta file download link at the bottom.
 
 
 ### Running on ECS
 
-0. Clone this repository 
+0. Clone this repository
 
 1. Change directory
 
@@ -147,9 +147,9 @@ Before creating the application, you need to prepare account credentials of Alib
 
         You can check the created product on Alibaba cloud from the following web console url. If you changed region settings in step 2, please change region accordingly.
 
-    *  ECS
+        *  ECS
 
-        https://ecs.console.aliyun.com/#/server/region/cn-qingdao
+            https://ecs.console.aliyun.com/#/server/region/cn-qingdao
 
 
     2. Use the tool
@@ -159,7 +159,7 @@ Before creating the application, you need to prepare account credentials of Alib
         2. Input your credentials to the form and submit it to get images in your bucket.
 
         3. Check image list and select a category for each image if you want.
-        
+
         4. Click incremant.meta file download link at the bottom.
 
 
