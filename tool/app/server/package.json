@@ -1,0 +1,20 @@
+{
+  "name": "express-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "npm install && cd static && npm install && npm run build",
+    "lint": "cd static && npm run lint",
+    "build": "cd static && npm run build",
+    "dev": "node server.js & cd static && npm run serve",
+    "start": "node server.js"
+  },
+  "author": "yoshi",
+  "license": "ISC",
+  "dependencies": {
+    "ali-oss": "^6.1.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
