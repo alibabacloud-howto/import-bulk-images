@@ -1,7 +1,10 @@
 'use strict';
+
 const OSS = require('ali-oss');
 const express = require('express');
 const bodyParser = require('body-parser');
+const BucketImageObject = require('./model/BucketImageObject').default;
+
 
 /* Settings */
 
@@ -56,7 +59,6 @@ app.get('/api/setting/reset', (req, res) => {
 
 // set alibaba cloud settings, fetch oss bucket image objects and send them
 app.post('/api/oss/bucket', (req, res) => {
-  // console.log(req.body);
   const region = req.body.region;
   const accessKeyId = req.body.accessKeyId;
   const accessKeySecret = req.body.accessKeySecret;
@@ -72,29 +74,18 @@ app.post('/api/oss/bucket', (req, res) => {
   // settings
   ossClient = new OSS({ region, accessKeyId, accessKeySecret });
   ossClient.useBucket(bucket);
-  // console.log(ossClient.options);
 
-  // fetch bucket image objects
+  // fetch bucket image objects and return them
   ossClient.list()
   .then((json) => {
     if (!json.objects) return [];
-    // console.log(json.objects);
 
     const imageExtension = /(png|jpg|jpeg)$/;
-    const delimiter = '/';
     return json.objects
       .filter(o => o.name.match(imageExtension))
-      .map((o) => {
-        const name = `${delimiter}${o.name}`.split(delimiter).pop();
-        const url = o.url;
-        return { name, url };
-      });
+      .map(o => new BucketImageObject(o));
   })
-  // return bucket image objects
-  .then((json) => {
-    // console.log(json);
-    res.send(JSON.stringify(json));
-  })
+  .then(json => res.send(JSON.stringify(json)))
   .catch(() => {
     const error = 'request failed (request parameter must be wrong)';
     res.status(400).send({ error });

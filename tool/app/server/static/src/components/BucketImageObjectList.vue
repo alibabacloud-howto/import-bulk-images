@@ -13,7 +13,7 @@
           <div style="margin-right:12px;">
             <img style="max-height:80px;" :src="item.url" :alt="item.url" />
           </div>
-          <select v-model="item.category">
+          <select v-model="item.categoryId">
             <option
               v-for="c in Object.values(CATEGORY)"
               :key="c.id"

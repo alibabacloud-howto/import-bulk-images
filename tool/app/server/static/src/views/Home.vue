@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import CATEGORY from "../model/Category";
 import IncrementMeta from "../model/IncrementMeta";
+import BucketImageObject from "../model/BucketImageObject";
 import BucketImageObjectList from "../components/BucketImageObjectList.vue";
 import SettingsForm from "../components/SettingsForm.vue";
 
@@ -108,7 +108,7 @@ export default {
     }
   },
   mounted() {
-    // this.init();
+    this.init();
   },
   methods: {
     /**
@@ -138,7 +138,7 @@ export default {
       this.bucket = data.bucket;
       this.folder = data.folder;
 
-      this.fetchImagesInBucket();
+      this.fetchBucketImageObjects();
     },
 
     /**
@@ -222,9 +222,9 @@ export default {
     },
 
     /**
-     * Fetch image objects in the bucket
+     * Fetch bucket image objects in the bucket
      */
-    fetchImagesInBucket() {
+    fetchBucketImageObjects() {
       const self = this;
       return new Promise((resolve, reject) => {
         if (
@@ -252,17 +252,15 @@ export default {
             return res.json();
           })
           .then(json => {
-            // console.log(json);
             if (json.error) {
               reject();
               return;
             }
 
-            self.bucketImageObjects = json.map(item => {
-              const res = item;
-              res.category = CATEGORY.OTHERS.id;
-              return res;
-            });
+            self.bucketImageObjects = json.map(
+              item => new BucketImageObject(item)
+            );
+
             if (self.folder) {
               let folder = self.folder;
               if (folder !== "/" && folder[0] === "/")
