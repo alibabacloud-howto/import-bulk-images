@@ -6,7 +6,7 @@
     </div>
 
     <!-- user settings form -->
-    <div style="padding:20px 2%;">
+    <div style="padding:32px 2%;">
       <SettingsForm
         ref="settingsForm"
         @onSubmitSettingsForm="onSubmitSettingsForm"
@@ -16,7 +16,7 @@
 
     <!-- bucket image object list -->
     <template v-if="bucketImageObjects.length > 0">
-      <div style="margin-top:40px;">
+      <div style="padding:32px 2%;">
         <BucketImageObjectList
           :bucketImageObjects="bucketImageObjects"
         ></BucketImageObjectList>
@@ -25,15 +25,19 @@
 
     <!-- output incremant.meta -->
     <template v-if="incrementMetaText && downloadUrl">
-      <div style="margin:40px 0; padding:12px 1%;">
-        <div style="padding:8px 0; font-size:24px;">increment.meta</div>
-        <div style="padding:8px 0; font-size:16px;">Preview</div>
+      <div style="padding:32px 2%;">
+        <div style="margin-botton:32px;">
+          <div style="padding:8px 0; font-size:28px;">increment.meta</div>
+          <div style="padding:8px 0; font-size:20px; color:#333;">Preview</div>
+        </div>
+
         <span
           id="incremant-meta-text"
           style="display:block; padding:8px 2%; background-color:lightgreen;
             line-height:32px; white-space:pre-wrap; word-wrap:break-word;"
           >{{ incrementMetaText }}</span
         >
+
         <div style="margin:16px 0;">
           <a
             :href="downloadUrl"
@@ -108,7 +112,7 @@ export default {
     }
   },
   mounted() {
-    this.init();
+    // this.init();
   },
   methods: {
     /**
@@ -257,9 +261,9 @@ export default {
               return;
             }
 
-            self.bucketImageObjects = json.map(
-              item => new BucketImageObject(item)
-            );
+            self.bucketImageObjects = json.map((item, index) => {
+              return new BucketImageObject(item, index);
+            });
 
             if (self.folder) {
               let folder = self.folder;

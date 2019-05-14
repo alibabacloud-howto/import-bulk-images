@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div style="padding:8px 0 32px 0; font-size:24px;">User Settings</div>
+    <div style="margin-bottom:32px; font-size:28px;">User Settings</div>
 
     <el-form
       :model="settingsForm"
       :rules="rules"
       ref="settingsForm"
-      label-width="120px"
-      class="demo-settingsForm"
+      label-width="140px"
+      class="setting-form"
     >
       <el-form-item
         label="accessKeyId"
@@ -64,6 +64,7 @@
 
       <el-form-item style="margin-top:40px;">
         <el-button @click="resetForm('settingsForm')">Reset</el-button>
+        <span style="margin-left:12px;"></span>
         <el-button type="primary" @click="submitForm('settingsForm')"
           >Get Image Files</el-button
         >
@@ -160,6 +161,9 @@ export default {
 </script>
 
 <style scoped>
+.setting-form >>> .el-form-item__label {
+  font-size: 16px;
+}
 .bucket-folder-input >>> .el-form-item__label {
   line-height: normal;
 }

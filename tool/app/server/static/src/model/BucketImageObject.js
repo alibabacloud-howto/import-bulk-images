@@ -9,11 +9,13 @@ import CATEGORY from "./Category";
  * It also contains additional properties that are input from user output to Increment meta file.
  */
 export default class BucketImageObject {
-  constructor(params) {
+  constructor(params, index) {
     this.name = getName(params);
     this.url = params.url;
 
+    this.itemId = params.itemId || 1000 + index + "";
     this.categoryId = params.categoryId || CATEGORY.OTHERS.id;
+    this.custContent = params.custContent || `this is product ${this.itemId}`;
   }
 }
 
@@ -21,7 +23,7 @@ export default class BucketImageObject {
  * Get name
  */
 function getName(params) {
-  if (!params.name) return "";
+  if (!params.name) return "name";
 
   const delimiter = "/";
   return `${delimiter}${params.name}`.split(delimiter).pop();

@@ -93,7 +93,7 @@ Before creating the application, you need to prepare account credentials of Alib
 
     2. Input your credentials to the form and submit it to get images in your bucket.
 
-    3. Check image list and select a category for each image if you want.
+    3. Check image list and change the properties for each image if you need.
 
     4. Click incremant.meta file download link at the bottom.
 
@@ -158,7 +158,7 @@ Before creating the application, you need to prepare account credentials of Alib
 
         2. Input your credentials to the form and submit it to get images in your bucket.
 
-        3. Check image list and select a category for each image if you want.
+        3. Check image list and change the properties for each image if you need.
 
         4. Click incremant.meta file download link at the bottom.
 

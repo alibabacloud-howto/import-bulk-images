@@ -1,7 +1,5 @@
 "use strict";
 
-import CATEGORY from "./Category";
-
 /**
  * Increment Meta
  */
@@ -16,13 +14,8 @@ export default class IncrementMeta {
  * Get increment.meta text
  */
 function getInCrementMetaText(bucketImageObjects) {
-  const itemIdBaseNum = 1000;
-
-  const incrementMetaJson = bucketImageObjects.map((e, i) => {
-    const item_id = itemIdBaseNum + i;
-    const cat_id = e.categoryId;
-    const pic_list = [e.name];
-    return new Row({ item_id, cat_id, pic_list });
+  const incrementMetaJson = bucketImageObjects.map(bucketImageObject => {
+    return new Row(bucketImageObject);
   });
 
   const str = JSON.stringify(incrementMetaJson).replace(/},/g, "}\n");
@@ -33,11 +26,11 @@ function getInCrementMetaText(bucketImageObjects) {
  * Row of each IncrementMeta
  */
 class Row {
-  constructor(params) {
-    this.operator = params.operator || "ADD";
-    this.item_id = params.item_id || 99999999;
-    this.cat_id = params.cat_id || CATEGORY.OTHERS.id;
-    this.cust_content = params.cust_content || "k1:v1,k2:v2";
-    this.pic_list = params.pic_list || [];
+  constructor(bucketImageObject) {
+    this.operator = "ADD";
+    this.item_id = bucketImageObject.itemId;
+    this.cat_id = bucketImageObject.categoryId;
+    this.cust_content = bucketImageObject.custContent;
+    this.pic_list = [bucketImageObject.name];
   }
 }
