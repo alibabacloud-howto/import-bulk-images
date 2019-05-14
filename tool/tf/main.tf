@@ -1,7 +1,7 @@
 variable "access_key" {}
 variable "secret_key" {}
-variable "private_key" {}
 variable "ssh_key_name" {}
+variable "ssh_key_local_path" {}
 variable "region" {}
 variable "prefix" {}
 variable "suffix" {}
@@ -21,7 +21,7 @@ resource "alicloud_vpc" "vpc" {
 }
 
 # VSwitch
-data "alicloud_zones" zones {
+data "alicloud_zones" "zones" {
   available_resource_creation = "VSwitch"
 }
 resource "alicloud_vswitch" "vswitch" {
@@ -75,7 +75,7 @@ resource "alicloud_instance" "ecs1" {
     vswitch_id = "${alicloud_vswitch.vswitch.id}"
     image_id = "${data.alicloud_images.centos.images.0.id}"
     instance_type = "${data.alicloud_instance_types.2c4g.instance_types.0.id}"
-    instance_name = "${var.prefix}ecs${var.suffix}1"
+    instance_name = "${var.prefix}ecs1${var.suffix}"
     key_name = "${var.ssh_key_name}"
 }
 # EIP (ecs1)
@@ -92,20 +92,20 @@ resource "alicloud_eip_association" "eip_ecs1_asso" {
         connection {
             type = "ssh"
             user = "root"
-            private_key = "${file(var.private_key)}"
+            private_key = "${file(var.ssh_key_local_path)}"
             host = "${alicloud_eip.eip_ecs1.ip_address}"
             timeout = "1m"
         }
     }
     provisioner "local-exec" {
-        command = "rm -rf ../app/server/node_modules/ && rm -rf ../app/server/static/node_modules/ && scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r -i ${var.private_key} ../app/ root@${alicloud_eip.eip_ecs1.ip_address}:/usr/local/src/"
+        command = "rm -rf ../app/server/node_modules/ && rm -rf ../app/server/static/node_modules/ && scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r -i ${var.ssh_key_local_path} ../app/ root@${alicloud_eip.eip_ecs1.ip_address}:/usr/local/src/"
     }
     provisioner "remote-exec" {
         script = "provision-remote-2.sh"
         connection {
             type = "ssh"
             user = "root"
-            private_key = "${file(var.private_key)}"
+            private_key = "${file(var.ssh_key_local_path)}"
             host = "${alicloud_eip.eip_ecs1.ip_address}"
             timeout = "1m"
         }
