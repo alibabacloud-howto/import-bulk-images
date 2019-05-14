@@ -60,7 +60,7 @@ Before creating the application, you need to prepare account credentials of Alib
 
 2. Create a SSH key
 
-    You need a SSH key pair to access your ECS instance by Terraform. Please follow
+    You need a SSH key pair to access to your ECS instance by Terraform. Please follow
     [this document to obtain an SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.htm). Please note the default target region of this sample is China(Qingdao).
 
 
@@ -139,7 +139,13 @@ Before creating the application, you need to prepare account credentials of Alib
 
     1. Run Terraform
 
-        The terraform script will create the application on [ECS](https://www.alibabacloud.com/help/doc-detail/25367.htm).
+        Initialize the Terraform by running the following command:
+
+        ```bash
+        terraform init
+        ```
+
+        and run the following command to run the script to create the application on [ECS](https://www.alibabacloud.com/help/doc-detail/25367.htm).
 
         ```bash
         terraform apply
