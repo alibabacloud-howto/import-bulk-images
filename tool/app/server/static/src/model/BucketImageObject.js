@@ -3,10 +3,10 @@
 import CATEGORY from "./Category";
 
 /**
- * Bucket image object
+ * Bucket image object class.
  *
- * It contains the data from bucket object.
- * It also contains additional properties that are input from user output to Increment meta file.
+ * It contains the data from OSS bucket.
+ * It also contains additional properties input from user that will output to an Increment meta file.
  */
 export default class BucketImageObject {
   constructor(params, index) {
@@ -20,7 +20,7 @@ export default class BucketImageObject {
 }
 
 /**
- * Get name
+ * Get the name.
  */
 function getName(params) {
   if (!params.name) return "name";

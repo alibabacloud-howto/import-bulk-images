@@ -3,12 +3,7 @@
     <div style="margin-bottom:32px;">
       <div style="padding:8px 0; font-size:28px;">Bucket image object list</div>
       <div style="padding:8px 0; font-size:20px; color:#333;">
-        Pleae check objects and set
-        <a
-          href="https://www.alibabacloud.com/help/doc-detail/66580.htm"
-          target="_blank"
-          >properties.</a
-        >
+        Pleae check objects and set the properties.
       </div>
     </div>
 

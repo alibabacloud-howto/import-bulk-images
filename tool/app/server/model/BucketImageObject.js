@@ -1,10 +1,10 @@
 'use strict';
 
 /**
- * Bucket image object
- * 
- * It contains the data from bucket object.
- * It also contains additional properties that are input from user output to Increment meta file.
+ * Bucket image object class.
+ *
+ * It contains the data from OSS bucket.
+ * It also contains additional properties input from user that will output to an Increment meta file.
  */
 exports.default = class BucketImageObject {
   constructor(params) {
@@ -14,7 +14,7 @@ exports.default = class BucketImageObject {
 }
 
 /**
- * Get name
+ * Get the name.
  */
 function getName(params) {
   if (!params.name) return '';

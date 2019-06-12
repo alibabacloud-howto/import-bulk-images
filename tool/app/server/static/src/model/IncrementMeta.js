@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Increment Meta
+ * Increment Meta class.
  */
 export default class IncrementMeta {
   constructor(bucketImageObjects) {
@@ -11,7 +11,7 @@ export default class IncrementMeta {
 }
 
 /**
- * Get increment.meta text
+ * Get the increment.meta file text.
  */
 function getInCrementMetaText(bucketImageObjects) {
   const incrementMetaJson = bucketImageObjects.map(bucketImageObject => {
@@ -23,7 +23,7 @@ function getInCrementMetaText(bucketImageObjects) {
 }
 
 /**
- * Row of each IncrementMeta
+ * Row of the each IncrementMeta data.
  */
 class Row {
   constructor(bucketImageObject) {

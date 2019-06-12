@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Categories of image search
+ * Categories of Alibaba Cloud Image Search.
  */
 export const CATEGORY = {
   TOPS: { id: 0, description: "Tops" },

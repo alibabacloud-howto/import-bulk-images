@@ -75,23 +75,23 @@ export default {
   },
   computed: {
     /**
-     * Info Message
+     * Info Message.
      */
     infoMessage() {
       if (!this.hasConfiguredSetting) {
-        return "Please configure settings";
+        return "Please configure the OSS settings";
       }
       if (!this.hasSearchedBucket) {
-        return "Please search bucket objects";
+        return "Please search the OSS bucket objects";
       }
       if (this.bucketImageObjects.length === 0) {
-        return "No oss objects in the bucket";
+        return "No OSS object found in the bucket";
       }
       return "";
     },
 
     /**
-     * Increment Meta Text
+     * Increment Meta Text.
      */
     incrementMetaText() {
       if (this.bucketImageObjects.length === 0) return "";
@@ -101,7 +101,7 @@ export default {
     },
 
     /**
-     * Download Url
+     * Download Url.
      */
     downloadUrl() {
       if (!this.incrementMetaText) return;
@@ -112,11 +112,11 @@ export default {
     }
   },
   mounted() {
-    // this.init();
+    this.init();
   },
   methods: {
     /**
-     * Fetch settings and set value into the settings form
+     * Fetch settings and set value into the settings form.
      */
     init() {
       this.fetchSettings()
@@ -132,7 +132,7 @@ export default {
     },
 
     /**
-     * Settings form submit event handler
+     * Settings form submit event handler.
      */
     onSubmitSettingsForm(data) {
       // console.log(data);
@@ -146,7 +146,7 @@ export default {
     },
 
     /**
-     * Settings form reset event handler
+     * Settings form reset event handler.
      */
     onResetSettingsForm(data) {
       // console.log(data);
@@ -160,7 +160,7 @@ export default {
     },
 
     /**
-     * Fetch settings
+     * Fetch settings.
      */
     fetchSettings() {
       const self = this;
@@ -185,7 +185,7 @@ export default {
 
             self.$notify({
               title: "Message",
-              message: "Settings found!"
+              message: "Previous settings found."
             });
 
             resolve();
@@ -195,7 +195,7 @@ export default {
     },
 
     /**
-     * Reset settings
+     * Reset settings.
      */
     resetSettings() {
       const self = this;
@@ -216,7 +216,7 @@ export default {
 
             self.$notify({
               title: "Message",
-              message: "Reset complete!"
+              message: "Reset completed."
             });
 
             resolve();
@@ -226,7 +226,7 @@ export default {
     },
 
     /**
-     * Fetch bucket image objects in the bucket
+     * Fetch the OSS bucket image objects.
      */
     fetchBucketImageObjects() {
       const self = this;
@@ -282,7 +282,7 @@ export default {
 
             self.$notify({
               title: "Message",
-              message: "Getting bucket objects succeeded!"
+              message: "Getting the OSS bucket objects succeeded!"
             });
 
             resolve();
