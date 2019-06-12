@@ -38,7 +38,7 @@ node -v
 
 * Terraform
 
-You can run this application on [Alibaba cloud ECS](https://www.alibabacloud.com/help/doc-detail/25367.htm). If you want to run it on ECS, you don't have to install npm or node, but you have to install Terraform on your local machine, which is powerful tool to construct cloud infrastructure. You can install Terraform from [here](https://www.terraform.io/).
+You can run this application on [Alibaba Cloud ECS](https://www.alibabacloud.com/help/doc-detail/25367.htm). If you want to run it on ECS, you don't have to install npm or node, but you have to install Terraform on your local machine, which is powerful tool to construct cloud infrastructure. You can install Terraform from [here](https://www.terraform.io/).
 
 You can check your environment with the following command in a terminal:
 
@@ -46,22 +46,17 @@ You can check your environment with the following command in a terminal:
 terraform -version
 ```
 
-Before creating the application, you need to prepare account credentials of Alibaba cloud.
+Before creating the application, you need to prepare account credentials of Alibaba Cloud.
 
-0. Create an Alibaba cloud account
+1. Create an Alibaba Cloud account
 
-    You need an Alibaba cloud account. If you don't have any account, please follow
+    You need an Alibaba Cloud account. If you don't have any account, please follow
     [this document to create one](https://www.alibabacloud.com/help/doc-detail/50482.htm).
 
-1. Create an access key
+2. Create an access key
 
-    You need an accessKeyId and an accessKeySecret to create your Alibaba cloud products by Terraform. Please follow
+    You need an accessKeyId and an accessKeySecret to create your Alibaba Cloud products by Terraform. Please follow
     [this document to obtain an access key id and secret](https://www.alibabacloud.com/help/faq-detail/63482.htm).
-
-2. Create a SSH key
-
-    You need a SSH key pair to access to your ECS instance by Terraform. Please follow
-    [this document to obtain an SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.htm). Please note the default target region of this sample is China(Qingdao).
 
 
 ## Usage
@@ -119,19 +114,19 @@ Before creating the application, you need to prepare account credentials of Alib
     2. Edit the file to set your information
 
         ```sh
-        # Access key id of Alibaba Cloud account
+        # The access key id of the Alibaba Cloud account
         access_key = "xxxxxxxxxxxxxxxx"
-        # Access key secret of Alibaba Cloud account
+        # The access key secret of the Alibaba Cloud account
         secret_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        # SSH key name of Alibaba Cloud ECS
-        ssh_key_name = "xxxxxxx"
-        # Local path to SSH key of Alibaba Cloud ECS
-        ssh_key_local_path = "/<path>/<to>/<ssh-key>/xxxxxxx.pem"
+        # The ssh key name of the Alibaba Cloud ECS
+        ssh_key_name = "ssh-increment-meta"
+        # The file path of the ssh key which will be saved on local
+        ssh_key_local_path = "./ssh-increment-meta-tf.pem"
         # Region in Alibaba Cloud
         region = "cn-qingdao"
-        # Prefix for name of ECS
+        # Prefix for the name of the ECS
         prefix = "tf-sample-"
-        # Suffix for name of ECS
+        # Suffix for the name of the ECS
         suffix = "-incremant-meta"
         ```
 
@@ -151,7 +146,7 @@ Before creating the application, you need to prepare account credentials of Alib
         terraform apply
         ```
 
-        You can check the created product on Alibaba cloud from the following web console url. If you changed region settings in step 2, please change region accordingly.
+        You can check the created product on Alibaba Cloud from the following web console url. If you changed region settings in step 2, please change region accordingly.
 
         *  ECS
 

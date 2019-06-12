@@ -57,6 +57,11 @@ resource "alicloud_security_group_rule" "sgr22" {
     cidr_ip = "0.0.0.0/0"
 }
 
+# SSH key pair
+resource "alicloud_key_pair" "keypair_ecs1" {
+    key_name = "${var.ssh_key_name}"
+    key_file = "${var.ssh_key_local_path}"
+}
 # ECS
 data "alicloud_images" "centos" {
   name_regex  = "^centos_7.*vhd$"
@@ -76,7 +81,8 @@ resource "alicloud_instance" "ecs1" {
     image_id = "${data.alicloud_images.centos.images.0.id}"
     instance_type = "${data.alicloud_instance_types.2c4g.instance_types.0.id}"
     instance_name = "${var.prefix}ecs1${var.suffix}"
-    key_name = "${var.ssh_key_name}"
+
+    key_name = "${alicloud_key_pair.keypair_ecs1.key_name}"
 }
 # EIP (ecs1)
 resource "alicloud_eip" "eip_ecs1" {
@@ -92,7 +98,7 @@ resource "alicloud_eip_association" "eip_ecs1_asso" {
         connection {
             type = "ssh"
             user = "root"
-            private_key = "${file(var.ssh_key_local_path)}"
+            private_key = "${file(alicloud_key_pair.keypair_ecs1.key_file)}"
             host = "${alicloud_eip.eip_ecs1.ip_address}"
             timeout = "1m"
         }
@@ -105,7 +111,7 @@ resource "alicloud_eip_association" "eip_ecs1_asso" {
         connection {
             type = "ssh"
             user = "root"
-            private_key = "${file(var.ssh_key_local_path)}"
+            private_key = "${file(alicloud_key_pair.keypair_ecs1.key_file)}"
             host = "${alicloud_eip.eip_ecs1.ip_address}"
             timeout = "1m"
         }
@@ -125,4 +131,7 @@ output "[debug] ecs1 image_id" {
 }
 output "[debug] eip_ecs1 ip_address" {
     value = "${alicloud_eip.eip_ecs1.ip_address}"
+}
+output "[output] ecs1 keypair_ecs1 key_name" {
+    value = "${alicloud_key_pair.keypair_ecs1.key_name}"
 }
