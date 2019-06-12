@@ -105,7 +105,7 @@ Before creating the application, you need to prepare account credentials of Alib
 1. Change directory
 
     ```
-    cd tf/
+    cd infrastructure/
     ```
 
 2. Create and edit Terraform variable file
