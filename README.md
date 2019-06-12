@@ -4,7 +4,7 @@
 
 1. [Introduction](#introduction)
 2. [Prerequisite](#prerequisite)
-3. [Step 1 - Prepare a increment.meta file](#Step-1---Prepare-a-increment.meta-file)
+3. [Step 1 - Prepare an increment.meta file](#Step-1---Prepare-an-incrementmeta-file)
 4. [Step 2 - Configure a OSS import setting parameters on Image Search instance](#Step-2---Configure-a-OSS-import-setting-parameters-on-Image-Search-instance)
 5. [Step 3 - Execute OSS import](#Step-3---Execute-OSS-import)
 5. [Step 4 - Test image search with your images](#Step-4---Test-image-search-with-your-images)
@@ -55,7 +55,7 @@ node -v
     You need an OSS bucket which contains image files. If you don't have any OSS bucket with image files, please follow [this document to create one](https://www.alibabacloud.com/help/doc-detail/31886.htm) to upload images. Please note **your Image Search instance and OSS must be in the same region**.
 
 
-## Step 1 - Prepare a increment.meta file
+## Step 1 - Prepare an increment.meta file
 
 To import image files from OSS to Image Search instance, you have to create a configuration file called [incremant.meta](https://www.alibabacloud.com/help/doc-detail/66580.htm#h3-import-images). The file contains list of image import task configuration. Each task configuration corresponds to one image. The following parameters are in each task configuration.
 
@@ -70,7 +70,7 @@ To import image files from OSS to Image Search instance, you have to create a co
 
 * pic_list: It is an array which only contains one image file name. For example, ["sample1.jpg"].
 
-To preapare a increment.meta file easier by the tool, please follow the steps:
+To preapare an increment.meta file easier with the tool, please follow the steps:
 
 1. Clone this repository
 
